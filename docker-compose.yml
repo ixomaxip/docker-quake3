@@ -1,0 +1,20 @@
+version: '2.3'
+
+services:
+  rt:
+    build:
+      context: .
+      args:
+        PORT: $PORT
+    image: $REG/games/$SRV:$RT
+    ports:
+      - $PORT:$PORT/udp
+    volumes:
+      - $PAK0_PATH:/usr/share/games/quake3/baseq3/pak0.pk3
+      - $SERVER_CFG:/usr/share/games/quake3/baseq3/server.cfg
+    restart: always
+  
+networks:
+  default:
+    external:
+      name: rt_default
