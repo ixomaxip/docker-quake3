@@ -27,7 +27,8 @@ RUN wget "http://youfailit.net/pub/idgames/idstuff/quake3/linux/${ioquake_data}"
 
 USER Debian-quake3
 
-EXPOSE 27960/udp
+ARG PORT
+EXPOSE $PORT/udp
 
 ENTRYPOINT ["/usr/games/quake3-server"]
 
